@@ -18,11 +18,26 @@ namespace CarBooking.Web.Pages.Cars
             _context = context;
         }
 
-        public IList<Car> Cars { get;set; } = default!;
+        public IList<Car> Cars { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
             Cars = await _context.Cars.ToListAsync();
+        }
+
+        public async Task<IActionResult> OnPostDelete(int? carId)
+        {
+            if (carId is null)
+                return NotFound();
+
+            var car = await _context.Cars.FirstOrDefaultAsync(x => x.Id == carId);
+            if (car is not null)
+            {
+                _context.Cars.Remove(car);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage();
         }
     }
 }

@@ -1,0 +1,42 @@
+﻿@page
+@model CarBooking.Web.Pages.Cars.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Car.Id" />
+
+            <div class="form-group mb-2">
+                <label asp-for="Car.Year" class="control-label"></label>
+                <input asp-for="Car.Year" class="form-control" />
+                <span asp-validation-for="Car.Year" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-2">
+                <span class="text-danger">*</span>
+                <label asp-for="Car.Name" class="control-label"></label>
+                <input asp-for="Car.Name" class="form-control" aria-required="true" />
+                <span asp-validation-for="Car.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Save" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <a asp-page="Index" class="mt-2">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
