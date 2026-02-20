@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarBooking.Web", "CarBooking.Web\CarBooking.Web.csproj", "{724B9632-76D4-4023-AF87-3C39789CE20A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarBooking.Data", "CarBooking.Data\CarBooking.Data.csproj", "{42DBDF23-8589-4521-AE99-0D66FFAF6116}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{724B9632-76D4-4023-AF87-3C39789CE20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{724B9632-76D4-4023-AF87-3C39789CE20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{724B9632-76D4-4023-AF87-3C39789CE20A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42DBDF23-8589-4521-AE99-0D66FFAF6116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42DBDF23-8589-4521-AE99-0D66FFAF6116}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42DBDF23-8589-4521-AE99-0D66FFAF6116}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42DBDF23-8589-4521-AE99-0D66FFAF6116}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

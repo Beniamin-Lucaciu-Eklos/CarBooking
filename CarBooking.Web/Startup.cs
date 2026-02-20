@@ -1,44 +1,53 @@
-﻿namespace CarBooking.Web;
+﻿using CarBooking.Data;
+using Microsoft.EntityFrameworkCore;
 
-public class Startup
+namespace CarBooking.Web
 {
-    public Startup(IConfiguration configuration)
+    public class Startup
     {
-        Configuration = configuration;
-    }
-
-    public IConfiguration Configuration { get; }
-
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddRazorPages();
-    }
-
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-        // Configure the HTTP request pipeline.
-        if (env.IsDevelopment())
+        public Startup(IConfiguration configuration)
         {
-            app.UseDeveloperExceptionPage();
-        }
-        else
-        {
-            app.UseExceptionHandler("/Error");
-            app.UseHsts();
+            Configuration = configuration;
         }
 
-        app.UseHttpsRedirection();
+        public IConfiguration Configuration { get; }
 
-        app.UseRouting();
-
-        app.UseAuthorization();
-
-        app.UseStaticFiles();
-
-        app.UseEndpoints(endpointbuilder =>
+        public void ConfigureServices(IServiceCollection services)
         {
-            endpointbuilder.MapRazorPages()
-            .WithStaticAssets();
-        });
+            services.AddDbContext<CarBookingAppDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            services.AddRazorPages();
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            // Configure the HTTP request pipeline.
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseStaticFiles();
+
+            app.UseEndpoints(endpointbuilder =>
+            {
+                endpointbuilder.MapRazorPages()
+                .WithStaticAssets();
+            });
+        }
     }
 }
