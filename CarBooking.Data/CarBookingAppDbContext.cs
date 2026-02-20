@@ -10,5 +10,7 @@ namespace CarBooking.Data
         }
 
         public DbSet<Car> Cars { get; set; }
+
+        public DbSet<Make> Makes { get; set; }
     }
 }

@@ -18,6 +18,8 @@ namespace CarBooking.Web
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+            services.AddHealthChecks()
+                .AddDbContextCheck<CarBookingAppDbContext>();
 
             services.AddRazorPages();
         }

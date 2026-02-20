@@ -19,20 +19,17 @@
 
             <div class="form-group mb-2">
                 <span class="text-danger">*</span>
-                <label asp-for="Car.Name" class="control-label"></label>
-                <input asp-for="Car.Name" class="form-control" aria-required="true" />
-                <span asp-validation-for="Car.Name" class="text-danger"></span>
+                <label asp-for="Car.Model" class="control-label"></label>
+                <input asp-for="Car.Model" class="form-control" aria-required="true" />
+                <span asp-validation-for="Car.Model" class="text-danger"></span>
             </div>
 
             <div class="form-group mt-4">
-                <input type="submit" value="Save" class="btn btn-warning" />
+                <button class="btn btn-warning">  <i class="fa fa-save"></i> Edit</button>
+                <a asp-page="Index" class="btn btn-outline-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back to List</a>
             </div>
         </form>
     </div>
-</div>
-
-<div class="row">
-    <a asp-page="Index" class="mt-2">Back to List</a>
 </div>
 
 @section Scripts {

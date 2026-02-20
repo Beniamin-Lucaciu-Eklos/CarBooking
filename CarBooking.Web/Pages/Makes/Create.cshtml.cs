@@ -6,32 +6,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using CarBooking.Data;
-using Microsoft.EntityFrameworkCore;
 
-namespace CarBooking.Web.Pages.Cars
+namespace CarBooking.Web.Pages.Makes
 {
     public class CreateModel : PageModel
     {
-        private readonly CarBookingAppDbContext _context;
+        private readonly CarBooking.Data.CarBookingAppDbContext _context;
 
-        public CreateModel(CarBookingAppDbContext context)
+        public CreateModel(CarBooking.Data.CarBookingAppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<IActionResult> OnGet()
+        public IActionResult OnGet()
         {
-            var makes = await _context.Makes.ToListAsync();
-            Makes = new SelectList(makes, "Id", "Name");
-
             return Page();
         }
 
         [BindProperty]
-        public Car Car { get; set; } = default!;
+        public Make Make { get; set; } = default!;
 
-        public SelectList Makes { get; set; } = default!;
-
+        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -39,7 +34,7 @@ namespace CarBooking.Web.Pages.Cars
                 return Page();
             }
 
-            _context.Cars.Add(Car);
+            _context.Makes.Add(Make);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

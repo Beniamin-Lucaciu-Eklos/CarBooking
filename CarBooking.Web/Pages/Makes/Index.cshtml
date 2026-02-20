@@ -1,0 +1,53 @@
+﻿@page
+@model CarBooking.Web.Pages.Makes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create"><i class="fa fa-plus" aria-hidden="true"></i> Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Make[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Make[0].Country)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Make)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    <form method="post" asp-page-handler="delete" asp-route-makeId="@item.Id">
+                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning">
+                            <i class="fa fa-edit" aria-hidden="true"></i>Edit
+                        </a>
+
+                        <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-info">
+                            <i class="fa fa-book-open" aria-hidden="true"></i>Details
+                        </a>
+
+                        <button class="btn btn-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i>Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

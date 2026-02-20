@@ -8,7 +8,7 @@
 <h1>Listing</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create"><i class="fa fa-plus" aria-hidden="true"></i>Create New</a>
 </p>
 
 <table class="table">
@@ -18,7 +18,7 @@
                 @Html.DisplayNameFor(model => model.Cars[0].Year)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cars[0].Name)
+                @Html.DisplayNameFor(model => model.Cars[0].Model)
             </th>
             <th>
 
@@ -34,16 +34,16 @@
                     @Html.DisplayFor(modelItem => item.Year)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.Model)
                 </td>
                 <td>
                     <form method="post" asp-page-handler="delete" asp-route-carId="@item.Id">
-                        <button class="btn btn-danger" onclick="return confirm('Youre about to delete ?')">Delete</button>
-
-                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                        <a asp-page="./Detail" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="fa fa-edit" aria-hidden="true"></i>Edit</a>
+                        <a asp-page="./Detail" asp-route-id="@item.Id" class="btn btn-info"><i class="fa fa-book-open" aria-hidden="true"></i>Details</a>
+                        <button class="btn btn-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i>Delete
+                        </button>
                     </form>
-
                 </td>
             </tr>
         }
